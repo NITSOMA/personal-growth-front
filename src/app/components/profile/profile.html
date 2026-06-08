@@ -1,0 +1,146 @@
+<div class="profile-container">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>Just Play</h2>
+     
+    </div>
+    <nav class="sidebar-nav">
+      
+     
+     
+      <a routerLink="journal" routerLinkActive="active" class="nav-item">Journal</a>
+      <a routerLink="focus" routerLinkActive="active" class="nav-item">Focus</a>
+      <a routerLink="habits" routerLinkActive="active" class="nav-item">Habits</a>
+      <a routerLink="./" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" class="nav-item">Profile</a>
+    </nav>
+
+    <div class="tree-image">
+        <img src="images/tree.png" alt="tree">
+      
+      </div>
+     
+
+      
+  </aside>
+
+  <main class="main-content">
+    
+    <router-outlet #myOutlet="outlet"></router-outlet>
+    
+@if (!myOutlet.isActivated && profileData.value(); as profile) {
+    <div class="profile-scroll-area">
+      <section class="user-info">
+        <div class="avatar-wrapper">
+          <img [src]="profile.profile_image" alt="Profile">
+          <button class="edit-btn">✎</button>
+
+         
+        </div>
+        <div class="user-details">
+          <h2>{{profile.username}}</h2>
+          <p>{{profile.email}}</p>
+          <p>Journeying towards a more focused and intentional life.</p>
+        </div>
+      </section>
+
+      
+
+      <section class="settings-section">
+        
+        <div class="image-bird">
+           
+            <img src="images/bird.png" alt="">
+        
+        </div>
+        <div class="menu-list">
+          <div class="menu-item" (click)="personalOpen.update(v => !v)">
+            <div class="menu-icon green">👤</div>
+            <div class="menu-text">
+              <strong>Personal Information</strong>
+              <span>Update your username</span>
+            </div>
+            <span class="arrow">›</span>
+          </div>
+         @if (personalOpen()) {
+           <div class="menu-item">
+          
+            <div class="menu-text">
+
+
+        <form [formGroup]="updateProfileForm" (ngSubmit)="submitRegisterData()">
+            
+            <div class="input-group">
+                <label>New Username</label>
+                <input type="text" formControlName="username" >
+            </div>
+
+           
+
+
+            <div class="input-group">
+                <label>Profile Picture</label>
+                <div class="file-upload-wrapper">
+                    <input type="file" (change)="addImage($event)" id="avatar" class="file-input">
+                    <label for="avatar" class="file-label">
+                        <span class="icon">📁</span> Choose a photo...
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-main">Save</button>
+        </form>
+              
+            </div>
+            
+          </div>
+
+         }
+          <div class="menu-item" (click)="signOut()">
+            <div class="menu-icon orange">↪</div>
+            <div class="menu-text">
+              <strong class="orange">Sign Out</strong>
+              <span class="orange-span">End your current session</span>
+            </div>
+            <span class="arrow">›</span>
+          </div>
+
+
+          <div class="menu-item" (click)="deleteMode.update(v => !v)">
+            <div class="menu-icon red">X</div>
+            <div class="menu-text">
+              <strong class="text-red">Delete Account</strong>
+              
+            </div>
+            <span class="arrow text-red">›</span>
+          </div>
+
+          @if (deleteMode()) {
+            <div class="menu-item delete-area">
+              <div class="menu-icon">
+                <img src="images/surprised.png" alt="">
+              </div>
+              <div class="menu-text">
+                <p>Are you sure you want to delete your account? This action cannot be undone.</p> 
+              </div>
+              <div class="delete-questions">
+                <button class="delete-area delete" (click)="deleteAccount()">Yes</button>
+                <button class="delete-area" (click)="deleteMode.set(false)">Close</button>
+              </div>
+          </div>
+          
+
+          }
+        </div>
+
+
+      </section>
+
+      
+    </div>
+
+
+}
+   
+
+  </main>
+</div>

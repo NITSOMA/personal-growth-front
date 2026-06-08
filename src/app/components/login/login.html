@@ -1,0 +1,37 @@
+<div class="registration-main">
+    <div class="register-form">
+        <div class="tab-header">
+            <button class="tab active">Sign In</button>
+            <button class="tab" routerLink="/register">Create Account</button>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <div class="input-group">
+                <label>Email Address Or Username</label>
+                <div class="input-wrapper">
+                    
+                    <input type="text" formControlName="login_id">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Password</label>
+                    
+                </div>
+                <div class="input-wrapper">
+                    <span class="icon">🔒</span>
+                    <input type="password" formControlName="password" placeholder="••••••••">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-main">Enter Sanctuary</button>
+        </form>
+
+        
+
+        <p class="terms">
+            By entering, you agree to our <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>.
+        </p>
+    </div>
+</div>

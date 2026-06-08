@@ -1,0 +1,109 @@
+<div class="journal-wrapper">
+  
+  <div class="workspace-panel">
+    
+    @if (showJournal() && journalToCheck(); as selectedJournal) {
+      <div class="journal-card saved-entry inspection-mode">
+        <div class="journal-header">
+          <h3>Entry: {{ selectedJournal.date || "Past Reflection" }}</h3>
+          <button class="btn-close-view" (click)="showJournal.set(false)">× Close View</button>
+        </div>
+        <div class="deleteButArea">
+          <button  (click)="removeJournal(selectedJournal.date)">delete</button>
+        </div>
+        
+        <div class="responses-list">
+          @for (response of selectedJournal.responses; track response.id) {
+            <div class="entry-row">
+              <p class="journal-prompt">{{response.question_text}}</p>
+              <p class="journal-answer">{{response.answer}}</p>
+            </div>
+          }
+        </div>
+      </div>
+
+    } @else if (todayJournal.value(); as journal) {
+      <div class="journal-card saved-entry">
+        <div class="journal-header">
+          <h3>Today's Reflection</h3>
+        </div>
+        
+         <div class="deleteButArea">
+          <button  (click)="removeJournal(journal.date)">delete</button>
+         </div>
+        
+        <div class="responses-list">
+          @for (response of journal.responses; track response.id) {
+            <div class="entry-row">
+              <p class="journal-prompt">{{response.question_text}}</p>
+              <p class="journal-answer">{{response.answer}}</p>
+            </div>
+          }
+        </div>
+      </div>
+
+    } @else if (template.value(); as template) {
+      <div class="journal-card write-entry">
+        <div class="journal-header">
+          <h3>{{template.name || "Untitled"}}</h3>
+        </div>
+        
+        <form class="responses-list" [formGroup]="journalForm" (ngSubmit)="createJournal()">
+          <div formArrayName="responses" class="responses-list">
+            @for (question of template.questions; track question.id) {
+              <div [formGroupName]="$index" class="entry-row">
+                <p class="journal-prompt">{{question.text}}</p>
+                <input 
+                  type="text" 
+                  formControlName="answer" 
+                  class="journal-input" 
+                  placeholder="Write your thoughts here...">
+              </div>
+            }
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" [disabled]="!journalForm.valid" class="btn-primary">
+              Save Entry
+            </button>
+          </div>
+        </form>
+      </div>
+    }
+  </div>
+
+  <div class="stats-column">
+    <div class="yearly-card">
+      <div class="card-header">
+        <h3>YEARLY RHYTHM</h3>
+      </div>
+
+      
+        <select (change)="onMonthChange($event)">
+          @for (monthName of Monthes; track monthName; let i = $index) {
+            <option [value]="i+1" [selected]="(i+1) === monthValue()">{{monthName}}</option>
+          }
+        </select>
+
+        <select (change)="onYearChange($event)">
+          @for (y of years; track y) {
+            <option [value]="y" [selected]="y === yearValue()">{{ y }}</option>
+          }
+        </select>
+      
+
+      <div class="yearly-grid">
+        @for (dateString of daysInMonthGrid(); track dateString) {
+          <div 
+            class="grid-cell" 
+            [class.completed]="statistics.value()?.includes(dateString)"
+            [attr.data-date]="dateString"
+            (click)="journalFromStats(dateString)">
+            <span class="day-number">{{ dateString.split('-')[2] }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+</div>

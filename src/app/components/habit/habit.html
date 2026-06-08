@@ -1,0 +1,85 @@
+<div class="dashboard-grid">
+
+  <div class="card habits-paper">
+    
+    <h3>Today's Focus</h3>
+
+    @if (habitsAll.value(); as habits) {
+      <div class="habits-list">
+        @for (habit of habits; track habit.id) {
+          <div class="habit-item" [class.completed]="habit.completed_today">
+            <label class="checkbox-container">
+              <input type="checkbox" (change)="completionChange(habit.id, $event)" [checked]="habit.completed_today">
+              <span class="custom-checkmark"></span>
+            </label>
+            <p class="habit-name">{{ habit.name }}</p>
+           
+            <button (click)="deleteHabit(habit.id)">Delete</button>
+          </div>
+        }
+      </div>
+    }
+
+    <div class="add-habit-section">
+      @if (!addHabitMode()) {
+        <button class="add-habit-trigger" (click)="addHabitMode.set(true)">
+          <span class="plus-icon">+</span> Add a new habit...
+        </button>
+      } @else {
+        <form [formGroup]="habitForm" (ngSubmit)="saveHabit()" class="inline-habit-form">
+          <input type="text" formControlName="name" placeholder="Type habit name..." autofocus class="sketch-input">
+          <div class="form-actions">
+            <button type="submit" class="btn-sketch btn-save">Save</button>
+            <button type="button" class="btn-sketch btn-cancel" (click)="addHabitMode.set(false)">Cancel</button>
+          </div>
+        </form>
+      }
+    </div>
+
+  
+  </div>
+
+  <div class="stats-column">
+    
+    
+
+    <div class="card yearly-card">
+      <div class="card-header">
+        <h3>YEARLY RHYTHM</h3>
+        
+  
+        
+      </div>
+      <select  (change)="onMonthChange($event)">
+          @for (monthName of Monthes; track monthName; let i = $index) {
+            <option [value]="i+1" [selected]="(i+1) === monthValue()">{{monthName}}</option>
+          }
+        </select>
+
+        <select (change)="onYearChange($event)">
+    @for (y of years; track y) {
+      <option [value]="y" [selected]="y === yearValue()">{{ y }}</option>
+    }
+  </select>
+
+ 
+  @if (statistics.value(); as statistics) {
+
+    <div class="yearly-grid">
+    @for (stat of statistics; track stat.day) {
+      
+     <div class="grid-cell" [class]="gridCellType(stat.percentage)"
+     [attr.extra-data]="stat.percentage + ' %' ">{{stat.date.split('-')[2]}}</div>
+
+    }
+    </div>
+  }
+   
+     
+    </div>
+
+  </div>
+
+ 
+
+</div>

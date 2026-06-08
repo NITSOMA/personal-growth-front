@@ -1,0 +1,103 @@
+<div class="main-journaling">
+
+  <div class="user-templates">
+    <h2 class="section-title">Custom Templates</h2>
+    
+    @if (userTemplates.value(); as templates) {
+      @if (templates.length > 0) {
+        <div class="template-grid">
+          @for (template of templates; track template.id) {
+            <div class="template-card">
+              <div class="card-header">
+                <h3>{{template.name || "Untitled Template"}}</h3>
+               <button class="deleteTemp" (click)="deleteTemplate(template.id)">Delete</button>
+              </div>
+               <span class="question-count">{{template.questions.length}} prompts</span>
+              
+              <div class="questions-preview">
+                @for (question of template.questions; track question.id; let i = $index) {
+                  @if (i < 3) {
+                    <p class="preview-line"><span class="q-num">{{i + 1}}.</span> {{question.text}}</p>
+                  }
+                }
+              </div>
+
+              <div class="card-actions">
+                <button [routerLink]="['/profile/journaling', template.id]" class="btn-start">
+                  Write Entry
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="empty-state">
+          <p>You haven't built any custom workspace layout structures yet.</p>
+        </div>
+      }
+    }
+
+    <div class="template-creation">
+      <button class="toggle-btn" [class.active]="createMode()" (click)="createMode.update(v => !v)">
+        @if (createMode()) {
+          <span>&times; Close Editor</span>
+        } @else {
+          <span>+ Create Custom Template</span>
+        }
+      </button>
+
+      @if (createMode()) {
+        <form class="template-form" [formGroup]="templateForm" (ngSubmit)="saveTemplate()">
+          <input type="text" class="template-name-input" formControlName="name" placeholder="Name your layout...">
+          
+          <div class="questions-list" formArrayName="questions">
+            @for (questionGroup of questionsArray.controls; track $index) {
+              <div class="question-row" [formGroupName]="$index">
+                <input type="number" class="order-input" formControlName="order" min="0" placeholder="#"/>
+                <input type="text" class="text-input" formControlName="text" placeholder="Write your prompt question here..." />
+              </div>
+            }
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" (click)="addQuestion()">Add Question</button>
+            <button type="submit" class="btn-primary">Save Configuration</button>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+
+  <div class="default-templates">
+    <h2 class="section-title">System Presets</h2>
+    
+    @if (defaultTemplates.value(); as defaults) {
+      @if (defaults.length > 0) {
+        <div class="template-grid">
+          @for (template of defaults; track template.id) {
+            <div class="template-card system-card">
+              <div class="card-header">
+                <h3>{{template.name}}</h3>
+                <span class="question-count">{{template.questions.length}} prompts</span>
+              </div>
+              
+              <div class="questions-preview">
+                @for (question of template.questions; track question.id; let i = $index) {
+                  @if (i < 3) {
+                    <p class="preview-line"><span class="q-num">{{i + 1}}.</span> {{question.text}}</p>
+                  }
+                }
+              </div>
+
+              <div class="card-actions">
+                <button [routerLink]="['/profile/journaling', template.id]" class="btn-start">
+                  Write Entry
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  </div>
+</div>

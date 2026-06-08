@@ -1,0 +1,322 @@
+.journal-wrapper {
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  width: 100%;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: flex-start;
+  
+}
+
+.workspace-panel {
+  width: 100%;
+}
+
+.journal-card {
+  background: rgb(255, 243, 235);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+ 
+}
+
+.journal-card.saved-entry {
+  position: relative;
+  border-radius: 20px;
+  padding: 28px 28px 20px 70px;
+  margin-bottom: 20px;
+
+}
+
+
+.journal-card.saved-entry::before, .journal-card.write-entry::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 52px;
+  width: 2px;
+  background: rgba(250, 104, 37, 0.6);
+}
+
+
+
+
+
+
+.journal-card.saved-entry .journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 10px;
+}
+
+.deleteButArea {
+  margin-bottom: 20px;
+ 
+  text-align: end;
+}
+
+.deleteButArea button {
+   margin-left: auto;
+  background: #eb3d0c;
+  border: 2px solid #28292b94;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  
+  transition: all 0.1s ease;
+}
+
+
+
+.deleteButArea button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #949eae3c;
+}
+
+.deleteButArea button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0px 0px 0px #1e293b;
+}
+
+ .journal-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #393736;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+}
+
+
+
+.btn-close-view {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #194d80f3;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+.btn-close-view:hover {
+  color: #1e56ce;
+}
+
+
+.journal-card.saved-entry .responses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  position: relative;
+  z-index: 2;
+}
+
+.journal-card.saved-entry .entry-row {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.journal-card.saved-entry .journal-prompt {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #3b3d41;
+}
+
+.journal-card.saved-entry .journal-answer {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  color: #010101;
+}
+
+.journal-card.write-entry {
+  position: relative;
+  padding: 28px 28px 20px 70px;
+  overflow: hidden;
+}
+
+
+
+
+
+.journal-card.write-entry .journal-header h3 {
+  margin: 0 0 32px;
+ 
+}
+
+.journal-card.write-entry .responses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.journal-card.write-entry .entry-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.journal-card.write-entry .journal-prompt {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #3e4148;
+}
+
+.journal-card.write-entry .journal-input {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 30px;
+  color: #111827;
+  font-family: Georgia, serif;
+}
+
+.journal-card.write-entry .journal-input:focus {
+  outline: none;
+}
+
+.journal-card.write-entry .journal-input::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.form-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-primary {
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #374151;
+}
+.stats-column {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+
+}
+
+.yearly-card {
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  position: relative;
+ 
+}
+
+
+.card-header h3 {
+   margin-bottom: 1.5rem;
+}
+
+.yearly-card select {
+  padding: 5px 14px;
+  border-radius: 8px;
+  border: 2px solid #1e293b93;
+  background-color: #ffffff;
+  font-family: inherit;
+  color: #1e293b;
+  cursor: pointer;
+  outline: none;
+  margin-right: 16px;
+  margin-bottom: 20px;
+ 
+}
+
+.yearly-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.grid-cell {
+  aspect-ratio: 1;
+  border: 1px solid #313132ef;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #1f1e1e;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+
+.grid-cell:hover {
+  transform: scale(1.05);
+  z-index: 5;
+}
+
+.day-number {
+  font-size: 12px;
+  font-weight: 500;
+  color: #161212;
+}
+
+.completed {
+  background-color: #3f6a38;
+}
+
+.completed .day-number {
+  color: #edf3f2;
+  font-weight: 600;
+}
+
+@media (max-width: 850px) {
+  .journal-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    
+  }
+}
+
+@media (max-width: 500px) {
+  
+}

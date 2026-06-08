@@ -1,0 +1,44 @@
+<div class="registration-main">
+    <div class="register-form">
+        <div class="tab-header">
+            <button class="tab" routerLink="/login">Sign In</button>
+            <button class="tab active">Create Account</button>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="submitRegisterData()">
+            
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" formControlName="username" placeholder="NatureLover22">
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" formControlName="email" placeholder="hello@sanctuary.com">
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" formControlName="password" placeholder="••••••••">
+            </div>
+
+            <div class="input-group">
+                <label>Profile Picture</label>
+                <div class="file-upload-wrapper">
+                    <input type="file" (change)="addImage($event)" id="avatar" class="file-input">
+                    <label for="avatar" class="file-label">
+                        <span class="icon">📁</span> Choose a photo...
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-main">Create Account</button>
+        </form>
+
+        
+
+        <p class="terms">
+            By joining, you agree to the <strong>Sanctuary Guidelines</strong> and <strong>Privacy Policy</strong>.
+        </p>
+    </div>
+</div>

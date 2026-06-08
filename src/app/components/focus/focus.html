@@ -1,0 +1,107 @@
+<div class="tracker-container">
+  <header class="tracker-header">
+    <h1>Create tasks and track time spent on each</h1>
+    <div class="input-group">
+      <input 
+        type="text" 
+        placeholder="Enter a new task name..." 
+        [ngModel]="newTaskName()"
+        (ngModelChange)="newTaskName.set($event)"
+        (keyup.enter)="addTask()"
+      />
+      <button class="btn btn-primary" (click)="addTask()" [disabled]="!newTaskName().trim()">
+        Add Task
+      </button>
+    </div>
+  </header>
+
+
+
+  <main class="tracker-grid">
+    <section class="task-sidebar">
+      <h2>Your Tasks</h2>
+      
+      @if (tasksResource.isLoading()) {
+        <div class="loader">Loading tasks...</div>
+      } @else if (tasksResource.value()?.length === 0) {
+        <p class="empty-state">No tasks created yet.</p>
+      } @else {
+        <div class="task-list">
+          @for (task of tasksResource.value(); track task.id) {
+            <div 
+              class="task-card" 
+              [class.active]="selectedTaskId() === task.id.toString()"
+              (click)="selectedTaskId.set(task.id.toString())"
+            >
+              <div class="task-info">
+                <div class="task-name-area">
+                  <span class="task-name">{{ task.name }}</span>
+                  <button (click)="removeTask(task.id)" class="deleteTask">Delete</button>
+                </div>
+                
+                <span class="task-duration">Today: {{ task.time_today }}S</span>
+              </div>
+              <div class="selection-indicator"></div>
+            </div>
+          }
+        </div>
+      }
+
+      <div class="stats-card">
+          <div class="stats-header">
+            <h4>Time Logs Analytics</h4>
+            <div class="period-selector">
+              <button [class.active]="selectedPeriod() === 'all'" (click)="selectedPeriod.set('all')">All-Time</button>
+              <button [class.active]="selectedPeriod() === '7'" (click)="selectedPeriod.set('7')">7 Days</button>
+              <button [class.active]="selectedPeriod() === '30'" (click)="selectedPeriod.set('30')">30 Days</button>
+            </div>
+          </div>
+
+          <div class="stats-body">
+            @if (statsResource.isLoading()) {
+              <div class="loader-sub">Calculating aggregates...</div>
+            } @else if (statsResource.value()) {
+              <div class="metric-row">
+                <span class="metric-label">Dedicated Duration:</span>
+                <span class="metric-value">{{ statsResource.value()?.total_time ?? 0 }} seconds</span>
+              </div>
+            }
+          </div>
+        </div>
+    </section>
+
+    <section class="control-panel">
+      @if (!activeTask()) {
+        <div class="empty-panel">
+          <p>Select a task from the list or create a new one to begin tracking time.</p>
+        </div>
+      } @else {
+        <div class="timer-card">
+          <span class="active-task-label">Currently Tracking</span>
+          <h3>{{ activeTask()?.name }}</h3>
+          
+          <div class="clock-display" [class.running]="isTimerRunning()">
+            {{ formattedTime() }}
+          </div>
+
+          <div class="timer-actions">
+            @if (!isTimerRunning()) {
+              <button class="btn btn-success" (click)="startTimer()">
+                Start Timer
+              </button>
+            } @else {
+              <button class="btn btn-warning" (click)="pauseTimer()">
+                Pause
+              </button>
+            }
+            <button class="btn btn-danger" (click)="stopTimer()" [disabled]="!isTimerRunning() && timerSeconds() === 0">
+              Stop & Save
+            </button>
+          </div>
+        </div>
+
+        
+      }
+    </section>
+  </main>
+</div>

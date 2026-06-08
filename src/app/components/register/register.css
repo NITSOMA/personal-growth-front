@@ -1,0 +1,188 @@
+.registration-main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: url('/images/landskape.jpg') no-repeat center center/cover;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  
+}
+
+
+.register-form {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  width: 100%;
+  max-width: 370px;
+  padding: 35px;
+  margin: 40px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.tab-header {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 5px;
+  border-radius: 14px;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab.active {
+  background: #ffffff;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.input-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:hover {
+  background: rgba(0, 0, 0, 0.09);
+}
+
+input:focus {
+  background: #fff;
+  border-color: #586657;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(88, 102, 87, 0.15);
+}
+
+
+.file-upload-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.file-label {
+  display: block;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-label:hover {
+  background: rgba(88, 102, 87, 0.05);
+  border-color: #586657;
+  color: #586657;
+}
+
+
+.btn-main {
+  width: 100%;
+  padding: 16px;
+  background: #586657;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-main:hover {
+  background: #4a5549;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(88, 102, 87, 0.3);
+}
+
+.btn-main:active {
+  transform: translateY(0) scale(0.98);
+}
+
+
+.separator {
+  font-size: 10px;
+  color: #888;
+  margin: 25px 0;
+  letter-spacing: 1px;
+}
+
+.social-grid {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-social {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-social:hover {
+  background: #f9f9f9;
+  transform: translateY(-1px);
+}
+
+.terms {
+  font-size: 11px;
+  color: #777;
+  margin-top: 30px;
+  line-height: 1.5;
+}

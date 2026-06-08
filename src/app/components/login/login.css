@@ -1,0 +1,149 @@
+
+.registration-main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: url('/images/landskape.jpg') no-repeat center center/cover;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  
+}
+
+
+.register-form {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  width: 100%;
+  max-width: 370px;
+  padding: 35px;
+  margin: 40px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* Tab Switcher */
+.tab-header {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 5px;
+  border-radius: 14px;
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab.active {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot {
+  font-size: 11px;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.forgot:hover {
+  color: #586657;
+}
+
+input {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:hover {
+  background: rgba(0, 0, 0, 0.09);
+}
+
+input:focus {
+  background: #ffffff;
+  border-color: #586657;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(88, 102, 87, 0.15);
+}
+
+
+.btn-main {
+  width: 100%;
+  padding: 18px;
+  background: #586657;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 15px 0 25px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-main:hover {
+  background: #4a5549;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(88, 102, 87, 0.3);
+}
+
+.btn-main:active {
+  transform: translateY(0) scale(0.98);
+  background: #3e473d;
+}
+
+
+.social-grid {
+  display: flex;
+  gap: 15px;
+}
+
+
+
+.terms {
+  font-size: 11px;
+  color: #777;
+  margin-top: 30px;
+  line-height: 1.5;
+}
