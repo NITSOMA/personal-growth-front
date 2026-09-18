@@ -46,7 +46,7 @@ export class User {
           this.accessToken.set(null);
           
           this.router.navigate(['/login'])
-          // You should probably add Router injection here to navigate to '/login'
+   
         },
         error: (err) => {
           console.error('Logout failed', err);

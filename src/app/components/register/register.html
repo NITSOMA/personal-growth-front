@@ -8,26 +8,26 @@
         <form [formGroup]="registerForm" (ngSubmit)="submitRegisterData()">
             
             <div class="input-group">
-                <label>Username</label>
-                <input type="text" formControlName="username" placeholder="NatureLover22">
+               
+                <input type="text" formControlName="username" placeholder="Username">
             </div>
 
             <div class="input-group">
-                <label>Email Address</label>
-                <input type="email" formControlName="email" placeholder="hello@sanctuary.com">
+                
+                <input type="email" formControlName="email" placeholder="Email Address">
             </div>
 
             <div class="input-group">
-                <label>Password</label>
-                <input type="password" formControlName="password" placeholder="••••••••">
+                
+                <input type="password" formControlName="password" placeholder="Password">
             </div>
 
             <div class="input-group">
-                <label>Profile Picture</label>
+                
                 <div class="file-upload-wrapper">
                     <input type="file" (change)="addImage($event)" id="avatar" class="file-input">
                     <label for="avatar" class="file-label">
-                        <span class="icon">📁</span> Choose a photo...
+                        Upload Profile Image
                     </label>
                 </div>
             </div>
@@ -37,8 +37,6 @@
 
         
 
-        <p class="terms">
-            By joining, you agree to the <strong>Sanctuary Guidelines</strong> and <strong>Privacy Policy</strong>.
-        </p>
+      
     </div>
 </div>

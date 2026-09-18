@@ -20,18 +20,21 @@
                     
                 </div>
                 <div class="input-wrapper">
-                    <span class="icon">🔒</span>
                     <input type="password" formControlName="password" placeholder="••••••••">
                 </div>
             </div>
+
+            @if (errorMessage()) {
+          <div class="error-area">
+            <p>Wrong Credentials</p>
+          </div>
+        }
 
             <button type="submit" class="btn-main">Enter Sanctuary</button>
         </form>
 
         
 
-        <p class="terms">
-            By entering, you agree to our <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>.
-        </p>
+        
     </div>
 </div>

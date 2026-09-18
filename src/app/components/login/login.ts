@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { User } from '../../services/user';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -13,6 +13,7 @@ export class Login {
   
   userService = inject(User)
   router = inject(Router)
+  errorMessage = signal(false)
   loginForm = new FormGroup({
     login_id: new FormControl("", {nonNullable: true, validators: Validators.required}),
     password: new FormControl("", {nonNullable: true, validators: Validators.required})
@@ -24,7 +25,9 @@ export class Login {
         next: () => {
           this.router.navigate(['/profile'])
         }, 
-        error: (err) => console.error(err)
+         error: (err) => {
+          this.errorMessage.set(true)
+        }
       })
     }
   }

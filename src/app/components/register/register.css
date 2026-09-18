@@ -58,15 +58,7 @@
   margin-bottom: 18px;
 }
 
-.input-group label {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: #333;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+
 
 input[type="text"],
 input[type="email"],
@@ -158,10 +150,7 @@ input:focus {
   letter-spacing: 1px;
 }
 
-.social-grid {
-  display: flex;
-  gap: 12px;
-}
+
 
 .btn-social {
   flex: 1;
@@ -180,9 +169,3 @@ input:focus {
   transform: translateY(-1px);
 }
 
-.terms {
-  font-size: 11px;
-  color: #777;
-  margin-top: 30px;
-  line-height: 1.5;
-}

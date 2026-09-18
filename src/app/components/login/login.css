@@ -26,7 +26,7 @@
   transition: transform 0.3s ease;
 }
 
-/* Tab Switcher */
+
 .tab-header {
   background: rgba(0, 0, 0, 0.05);
   padding: 5px;
@@ -74,16 +74,7 @@
   align-items: center;
 }
 
-.forgot {
-  font-size: 11px;
-  color: #777;
-  cursor: pointer;
-  transition: color 0.2s;
-}
 
-.forgot:hover {
-  color: #586657;
-}
 
 input {
   width: 100%;
@@ -134,16 +125,16 @@ input:focus {
 }
 
 
-.social-grid {
-  display: flex;
-  gap: 15px;
-}
 
 
 
-.terms {
-  font-size: 11px;
-  color: #777;
-  margin-top: 30px;
-  line-height: 1.5;
+
+
+
+
+
+.error-area {
+  background-color: rgba(235, 126, 144, 0.551);
+  padding: 10px 5px;
+  border-radius: 4px;
 }

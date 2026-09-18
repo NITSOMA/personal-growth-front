@@ -16,6 +16,7 @@ export class Journaling {
 
   id = input.required<string>();
   showJournal = signal(false)
+  fullScreen = signal(false)
 
   journalToCheck = signal<JournalInterface | null>(null)
    Monthes = ['Juanury', 'February', 'March', 'April', 

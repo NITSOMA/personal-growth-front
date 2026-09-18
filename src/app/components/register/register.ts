@@ -3,6 +3,7 @@ import { User } from '../../services/user';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { form } from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
+import { ResizeDirective } from '../../directives/resize-directive';
 
 @Component({
   selector: 'app-register',
