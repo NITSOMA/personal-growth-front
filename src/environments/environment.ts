@@ -1,5 +1,5 @@
 
 
 export const environment = {
-    apiUrl: 'https://your-service-name.onrender.com'
+    apiUrl: 'https://personal-growth-backend.onrender.com'
 }
