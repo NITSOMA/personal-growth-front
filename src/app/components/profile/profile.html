@@ -32,7 +32,18 @@
       <section class="user-info">
         <div class="avatar-wrapper">
           <img [src]="profile.profile_image" alt="Profile">
-          <button class="edit-btn">✎</button>
+           <div class="file-upload-wrapper">
+                    <input type="file"  id="avatar" (change)="addImage($event)" id="avatar" class="file-input">
+                    
+                      <label for="avatar" class="edit-btn">✎</label>
+                       
+                  
+                </div>
+          
+
+
+
+          
 
          
         </div>
@@ -77,15 +88,7 @@
            
 
 
-            <div class="input-group">
-                <label>Profile Picture</label>
-                <div class="file-upload-wrapper">
-                    <input type="file" (change)="addImage($event)" id="avatar" class="file-input">
-                    <label for="avatar" class="file-label">
-                        <span class="icon">📁</span> Choose a photo...
-                    </label>
-                </div>
-            </div>
+            
 
             <button type="submit" class="btn-main">Save</button>
         </form>

@@ -22,19 +22,41 @@ export class Profile {
 
   updateProfileForm = new FormGroup({
     username: new FormControl("", Validators.required),
-     profile_image: new FormControl<File | null>(null)
+    
 
+  })
+
+  updateProfileImage = new FormGroup({
+     profile_image: new FormControl<File | null>(null)
+    
   })
 
 
     addImage(event: any){
     const file: File = event.target.files[0];
     if (file){
-      this.updateProfileForm.patchValue({
+      this.updateProfileImage.patchValue({
         profile_image: file
       })
     }
+    const formdata = new FormData();
+    if (this.updateProfileImage.valid){
+      const registerValues = this.updateProfileImage.value;
+      formdata.append("profile_image", registerValues.profile_image!)
+    }
+
+       this.userSErvice.updateProfile(formdata).subscribe({
+      next: () => {
+        
+        this.profileData.reload()
+        this.personalOpen.set(false)
+
+      }, 
+      error: (err) => console.error(err)
+    })
+    
   }
+
 
 
   submitRegisterData() {
@@ -44,12 +66,7 @@ export class Profile {
 
     formdata.append("username", registerValues.username!)
     
-   
-
-    if (registerValues.profile_image){
-      formdata.append("profile_image", registerValues.profile_image!)
-    }
-
+  
     this.userSErvice.updateProfile(formdata).subscribe({
       next: () => {
         

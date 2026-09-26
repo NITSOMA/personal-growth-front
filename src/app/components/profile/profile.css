@@ -98,17 +98,6 @@
   z-index: 999;
 }
 
-.edit-btn {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: #fff;
-  border: 1px solid #827373;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
 
 .user-details {
     margin-left: 30px;
@@ -238,31 +227,31 @@ input:focus {
 }
 
 
-.file-upload-wrapper {
-  position: relative;
-  width: 100%;
-}
-
 .file-input {
-  position: absolute;
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
+  display: none;
 }
 
-.file-label {
-  display: block;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 2px dashed rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  text-align: center;
-  font-size: 13px;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.file-upload-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
+
+.edit-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
 
 
 .btn-main {
