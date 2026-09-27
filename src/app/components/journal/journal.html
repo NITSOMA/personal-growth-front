@@ -72,6 +72,7 @@
     <h2 class="section-title">System Presets</h2>
     
     @if (defaultTemplates.value(); as defaults) {
+       <h2 class="section-title">System Presets</h2>
       @if (defaults.length > 0) {
         <div class="template-grid">
           @for (template of defaults; track template.id) {
